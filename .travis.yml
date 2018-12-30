@@ -59,9 +59,5 @@ script:
     - install_run $PLAT
 
 after_success:
-    # Upload wheels to Rackspace container
-    - pip install wheelhouse-uploader
-    - python -m wheelhouse_uploader upload --local-folder
-          ${TRAVIS_BUILD_DIR}/wheelhouse/
-          $UPLOAD_ARGS
-          $CONTAINER
+    # Upload wheels to Nextcloud
+    - "curl -T ${TRAVIS_BUILD_DIR}/wheelhouse/h5py*.whl -u $NEXTCLOUD_USER:$NEXTCLOUD_PASSWORD -H 'X-Requested-With: XMLHttpRequest' $NEXTCLOUD_URL"
