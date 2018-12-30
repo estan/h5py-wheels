@@ -60,4 +60,4 @@ script:
 
 after_success:
     # Upload wheels to Nextcloud
-    - "curl -T ${TRAVIS_BUILD_DIR}/wheelhouse/h5py*.whl -u $NEXTCLOUD_USER:$NEXTCLOUD_PASSWORD -H 'X-Requested-With: XMLHttpRequest' $NEXTCLOUD_URL"
+    - "curl -T ${TRAVIS_BUILD_DIR}/wheelhouse/h5py*.whl -u $NEXTCLOUD_USER:$NEXTCLOUD_PASSWORD -H 'X-Requested-With: XMLHttpRequest' -H 'X-Method-Override: PUT' $NEXTCLOUD_URL"
