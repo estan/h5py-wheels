@@ -11,7 +11,7 @@ function build_wheel {
 }
 
 function build_libs {
-    build_hdf5
+    LDFLAGS="-z global" CFLAGS="-Wl,-z,global" build_hdf5
 }
 
 function build_linux_wheel {
